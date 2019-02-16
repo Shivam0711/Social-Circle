@@ -142,7 +142,6 @@ public class My_contacts extends AppCompatActivity {
     public void sendSMS()
     {
         Cursor data = mDatabaseHelper.getData();
-        ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext()) {
             String details = data.getString(1);
             int len = details.length();
@@ -213,5 +212,15 @@ public class My_contacts extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_HEADSETHOOK){
+            //handle click
+            sendSMS();
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

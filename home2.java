@@ -1,9 +1,14 @@
 package byone4all.connected.social.socialcircle;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,9 +29,55 @@ public class home2 extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home2);
+        int n=0;
         mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        //permission
+        int permissioncheck0 = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+        int permissioncheck1 = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
+        int permissioncheck2 = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int permissioncheck3 = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+
+
+            if (permissioncheck0 == PackageManager.PERMISSION_GRANTED) {
+
+
+
+            }
+            else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CONTACTS}, 1);
+                if (permissioncheck0 == PackageManager.PERMISSION_GRANTED) {
+                    if (permissioncheck1 == PackageManager.PERMISSION_GRANTED) {
+
+                    }
+                    else {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 3);
+
+
+
+
+
+                    }
+
+                }
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
 
 
         findViewById(R.id.cv1).setOnClickListener(new View.OnClickListener() {
@@ -36,11 +87,39 @@ public class home2 extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        findViewById(R.id.cv1s).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home2.this, Survey_Local.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.cv3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home2.this,heatmap.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.cv1d).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home2.this, nearby.class);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.cv2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(home2.this, report.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.cvw3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home2.this, chatbot.class);
                 startActivity(intent);
             }
         });
@@ -89,17 +168,39 @@ public class home2 extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.MC) {Intent d = new Intent(home2.this,My_contacts.class);
+            startActivity(d);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.NH) {Intent d = new Intent(home2.this,nearby.class);
+            startActivity(d);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.CS) {Intent d = new Intent(home2.this,Survey_Local.class);
+            startActivity(d);
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.RO) {Intent d = new Intent(home2.this,report.class);
+            startActivity(d);
 
-        } else if (id == R.id.nav_share) {
+        }
+        else if (id == R.id.w4) {Intent d = new Intent(home2.this,education.class);
+            startActivity(d);
 
-        } else if (id == R.id.nav_send) {
+        }
+        else if (id == R.id.w3) {
+
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("https://www.google.co.in/maps/search/police"));
+            startActivity(intent);
+
+        } else if (id == R.id.LO) {
+            FirebaseAuth.getInstance().signOut();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+
+            if(currentUser==null){
+
+                Intent k = new Intent(home2.this, Intro.class );
+                startActivity(k);
+                finish();
+            }
 
         }
 

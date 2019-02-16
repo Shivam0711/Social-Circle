@@ -9,18 +9,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class heatmap extends AppCompatActivity {
-
+public class education extends AppCompatActivity {
 
     private WebView web;
 
     ProgressBar pgb;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_heatmap);
-
+        setContentView(R.layout.activity_education);
         pgb = findViewById(R.id.PGQ );
         web = (WebView) findViewById(R.id.web1);
         web.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -51,7 +48,7 @@ public class heatmap extends AppCompatActivity {
 
             }
         });
-        web.loadUrl("http://www.heatmap.epizy.com");
+        web.loadUrl("http:/kgdlhdglgc8576kgcdhkdfx.blogspot.com/");
         WebSettings Webset= web.getSettings();
         Webset.setJavaScriptEnabled(true);
 

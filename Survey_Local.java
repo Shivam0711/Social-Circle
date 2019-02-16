@@ -9,8 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class heatmap extends AppCompatActivity {
-
+public class Survey_Local extends AppCompatActivity {
 
     private WebView web;
 
@@ -19,8 +18,7 @@ public class heatmap extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_heatmap);
-
+        setContentView(R.layout.activity_survey__local);
         pgb = findViewById(R.id.PGQ );
         web = (WebView) findViewById(R.id.web1);
         web.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
@@ -51,7 +49,7 @@ public class heatmap extends AppCompatActivity {
 
             }
         });
-        web.loadUrl("http://www.heatmap.epizy.com");
+        web.loadUrl("https://docs.google.com/forms/d/e/1FAIpQLScJ_Wm15goydOg6Q127vcn3dAJ5RL0s2QqEQ59qcG5_SKCE0A/viewform?vc=0&c=0&w=1");
         WebSettings Webset= web.getSettings();
         Webset.setJavaScriptEnabled(true);
 
